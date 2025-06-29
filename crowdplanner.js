@@ -74,3 +74,62 @@ L.control.scale({
   metric: true,            // Show metric units (meters/kilometers)
   imperial: false          // Disable imperial units if you want
 }).addTo(map);
+
+let measureLayer = null;      // Layer for the drawn polyline
+let isMeasuring = false;      // Measuring mode toggle
+
+const measureBtn = document.getElementById('measure-btn');
+const measureResult = document.getElementById('measure-result');
+
+// Create a Leaflet.Draw handler for polylines but don’t enable it yet
+const measureDrawControl = new L.Draw.Polyline(map, {
+  shapeOptions: { color: 'red' },
+});
+
+// Start or stop measuring when button clicked
+measureBtn.addEventListener('click', () => {
+  if (!isMeasuring) {
+    isMeasuring = true;
+    measureBtn.textContent = 'Cancel Measuring';
+    measureDrawControl.enable();
+  } else {
+    isMeasuring = false;
+    measureBtn.textContent = 'Start Measuring';
+    measureDrawControl.disable();
+    if (measureLayer) {
+      map.removeLayer(measureLayer);
+      measureLayer = null;
+      measureResult.textContent = '';
+    }
+  }
+});
+
+// When the user finishes drawing
+map.on(L.Draw.Event.CREATED, function (e) {
+  if (!isMeasuring) return;
+
+  if (measureLayer) {
+    map.removeLayer(measureLayer);
+  }
+  measureLayer = e.layer;
+  map.addLayer(measureLayer);
+
+  // Get coordinates from the polyline
+  const latlngs = measureLayer.getLatLngs();
+
+  // Convert Leaflet latlngs to GeoJSON LineString coordinates
+  const lineCoords = latlngs.map((latlng) => [latlng.lng, latlng.lat]);
+
+  // Create Turf LineString
+  const line = turf.lineString(lineCoords);
+
+  // Calculate length in kilometers
+  const length = turf.length(line, { units: 'kilometers' });
+
+  measureResult.textContent = `Distance: ${length.toFixed(3)} km`;
+
+  // Optionally disable measuring mode automatically
+  isMeasuring = false;
+  measureBtn.textContent = 'Start Measuring';
+  measureDrawControl.disable();
+});
