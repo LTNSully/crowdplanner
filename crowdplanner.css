@@ -1,0 +1,45 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: beige;
+}
+
+#map {
+  height: 650px;
+  width: 80%;
+  max-width: 900px;   
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  border-radius: 4px;        
+}
+
+#header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px; 
+}
+
+#map-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.map-caption {
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 10px;
+  text-align: center;
+}
+
+h1 {
+    font-size: 70px;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: larger;
+    margin-top: 3px;
+    margin-bottom: 5px;
+}

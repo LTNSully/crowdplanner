@@ -4,7 +4,7 @@ Mapping Tool to predict or verify crowd sizes
 
 This is a personal project to showcase my current skills in developping/coding/designing.
 
-The website will show a map (Google) and allow the user to draw shapes on it.
+The website will show a map (Open Street Maps) and allow the user to draw shapes on it.
 Using that shape it will calculate the seurface area and provide a crowd size based on a desired density.
 
 This tool can be used by event planners to estimate attendance numbers for logistical, financial or safety purposes. If using it
