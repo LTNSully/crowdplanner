@@ -1,12 +1,18 @@
 # crowdplanner
 
-Mapping Tool to predict or verify crowd sizes
+Crowd Planner is a web application that helps users estimate the size of a crowd in a defined area usiing Open Steet Maps.
+The user draws a shape on the map and the application will calculate its surface area. It will then calculate the size of a crowd within it based on a chosen density.
 
-This is a personal project to showcase my current skills in developping/coding/designing.
+## 🌍 Features
 
-The website will show a map (Open Street Maps) and allow the user to draw shapes on it.
-Using that shape it will calculate the seurface area and provide a crowd size based on a desired density.
+- Open Street Maps integration
+- Draw polygons to mark areas
+- Calculate surface area of drawn shapes
+- Estimate crowd size based on user-defined density
 
-This tool can be used by event planners to estimate attendance numbers for logistical, financial or safety purposes. If using it
-in such manner, be aware that this is a planning tool alone and by no means supercedes local government bylaws and rules.
-It can also be used to estimate a crowd size of an event (protest, concert, fair, etc.) seen on TV/News/Social media.
+## 🛠️ Built With
+
+- HTML, CSS, JavaScript
+- [Leaflet.js](https://leafletjs.com/) - Open Street Maps
+- [Leaflet.draw](https://github.com/Leaflet/Leaflet.draw) - Shape Drawing
+- [Turf.js](https://turfjs.org/) - Area Calculations

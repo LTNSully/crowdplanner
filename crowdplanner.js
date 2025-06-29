@@ -58,15 +58,19 @@ map.on('draw:created', function (e) {
 
   // Create Turf polygon
   var turfPolygon = turf.polygon([coords]);
-
   // Calculate area in square meters
   var area = turf.area(turfPolygon);
-
   // Optional: format nicely
   var areaKm = (area / 1_000_000).toFixed(2);
-
   // Show area as a popup
   layer.bindPopup("Area: " + areaKm + " km²").openPopup();
-
   console.log("Area in m²:", area);
 });
+
+//show scale on the map
+L.control.scale({
+  position: 'bottomleft',  
+  maxWidth: 200,          
+  metric: true,            // Show metric units (meters/kilometers)
+  imperial: false          // Disable imperial units if you want
+}).addTo(map);
