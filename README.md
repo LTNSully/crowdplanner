@@ -1,6 +1,6 @@
-# crowdplanner
+# Crowdplanner
 
-Crowd Planner is a web application that helps users estimate the size of a crowd in a defined area usiing Open Steet Maps.
+Crowd Planner is a web application that helps users estimate the size of a crowd in a defined area using Open Steet Maps.
 The user draws a shape on the map and the application will calculate its surface area. It will then calculate the size of a crowd within it based on a chosen density.
 
 ## 🌍 Features
